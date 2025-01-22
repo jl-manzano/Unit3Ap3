@@ -16,29 +16,20 @@ public class Ejer4 {
 		// variable -> almacenar numero aleatorio
 		int aleat;
 
-		// variable -> almacenar tamaño TreeSet
-		int tamLista = 20;
-		
 		// variable para alamcenar min
-		int min = Integer.MIN_VALUE;
+		int min = 0;
 
 		// construir lista TreeSet -> almacenar numeros enteros positivos
 		TreeSet<Integer> enterosAleatorios = new TreeSet<>();
 
-		// bucle while - almacenar numeros aleatorios en lista ArrayList
-		while (tamLista > 0) {
+		// bucle while - almacenar numeros aleatorios en lista
+		while (enterosAleatorios.size() < 20) {
 
 			// generar numero entero aleatorio
-			aleat = rand.nextInt(min,10);
+			aleat = rand.nextInt(min, 100);
 
-			// condicional if -> comprobar que la lista no contiene el numero aleatorio generado
-			if (!enterosAleatorios.contains(aleat)) {
-				// añadir numero introducido por usuario a la lista
-				enterosAleatorios.add(aleat);
-				// decrementar en 1 el tamaño de la lista
-				tamLista--;
-
-			}
+			// añadir numero aleatorios a la lista
+			enterosAleatorios.add(aleat);
 
 		}
 
