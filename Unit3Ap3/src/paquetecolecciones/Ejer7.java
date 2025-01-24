@@ -34,29 +34,27 @@ public class Ejer7 {
 
 		// bucle do-while - almacenar palabras en lista ArrayList
 		do {
-			
+
 			System.out.println("\nDICCIONARIO ESP-ENG");
-			// pedir nombre a usuario
+			// pedir opcion a usuario
 			System.out
 					.println("Introduzca una opcion:\n" + "1. Insertar palabra\n" + "2. Busca palabra\n" + "3. Salir");
 			opcion = sc.nextInt();
-			
+
 			// limpiar buffer
 			sc.nextLine();
 
 			// condicional switch -> evaluar opcion introducida por usuario
 			switch (opcion) {
 			case 1 -> {
-				// bucle do-while -> asegurar que usuario introduzca palabra en español e ingles
-				do {
-					// pedir palabra en español a usuario
-					System.out.println("\nIntroduzca palabra (ESP): ");
-					palabraEsp = sc.nextLine().toLowerCase();
 
-					// pedir palabra en ingles a usuario
-					System.out.println("\nIntroduzca palabra (ENG): ");
-					palabraEng = sc.nextLine().toLowerCase();
-				} while (palabraEsp.isEmpty() && palabraEng.isEmpty());
+				// pedir palabra en español a usuario
+				System.out.println("\nIntroduzca palabra (ESP): ");
+				palabraEsp = sc.nextLine().toLowerCase();
+
+				// pedir palabra en ingles a usuario
+				System.out.println("\nIntroduzca palabra (ENG): ");
+				palabraEng = sc.nextLine().toLowerCase();
 
 				// añadir palabras (esp, eng) introducidas por usuario a lista
 				diccionarioES.put(palabraEsp, palabraEng);
@@ -64,17 +62,21 @@ public class Ejer7 {
 			}
 
 			case 2 -> {
-				do {
-					// pedir palabra en español a usuario
-					System.out.println("\nIntroduzca palabra a traducir (ESP -> ENG): ");
-					traductionEspToEng = sc.nextLine().toLowerCase();
+				// pedir palabra en español a usuario
+				System.out.println("\nIntroduzca palabra a traducir (ESP -> ENG): ");
+				traductionEspToEng = sc.nextLine().toLowerCase();
 
-				} while (traductionEspToEng.isEmpty());
+				// condicional if -> controlar que la palabra se encuentra en el diccionario /
+				// si no - devolver que no se encuentra
+				if (diccionarioES.get(traductionEspToEng) != null) {
+					// usar método get (introducir clave (palabra (ESP) y devuelve valor (palabra
+					// ENG))
+					System.out.println(
+							"\nTRADUCCIÓN: \n" + traductionEspToEng + " -> " + diccionarioES.get(traductionEspToEng));
+				} else {
+					System.err.println("La palabra no se encuentra en el diccionario.");
+				}
 
-				// usar método get (introducir clave (palabra (ESP) y devuelve valor (palabra
-				// ENG))
-				System.out.println("\nTRADUCCIÓN: \n"
-						+ traductionEspToEng + " -> " + diccionarioES.get(traductionEspToEng)); 
 			}
 
 			case 3 -> {
