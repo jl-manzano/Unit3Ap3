@@ -8,7 +8,7 @@ public class Ejer8 {
 		// crear objeto scanner
 		Scanner sc = new Scanner(System.in);
 
-		// construir lista TreeSet -> almacenar numeros enteros positivos
+		// construir mapa HasshMap -> almacenar credenciales de usuarios
 		HashMap<String, String> aclRealBetis = new HashMap<String, String>();
 
 		// variable para almacenar opcion
@@ -20,13 +20,18 @@ public class Ejer8 {
 		// variable para almacenar passwd
 		String passwd;
 
+		// variable para almacenar contador
+		int contador = 3;
+		
+		// boolean -> almacenar acceso concedido
+		boolean accesoConcedido =  false;
+
 		// bucle do-while - almacenar palabras en lista ArrayList
 		do {
 
 			System.out.println("\nACL REAL BETIS TIENDA OFICIAL");
 			// pedir opcion a usuario
-			System.out
-					.println("Introduzca una opcion:\n" + "1. Registro\n" + "2. Login\n" + "3. Salir");
+			System.out.println("Introduzca una opcion:\n" + "1. Registro\n" + "2. Login\n" + "3. Salir");
 			opcion = sc.nextInt();
 
 			// limpiar buffer
@@ -39,11 +44,11 @@ public class Ejer8 {
 				do {
 					// pedir username a usuario
 					System.out.println("\nIntroduzca nombre de usuario: ");
-					username = sc.nextLine().toLowerCase();
+					username = sc.nextLine().trim().toLowerCase();
 
 					// pedir passwd a usuario
 					System.out.println("\nIntroduzca una contraseña: ");
-					passwd = sc.nextLine().toLowerCase();
+					passwd = sc.nextLine().trim().toLowerCase();
 				} while (username.isEmpty() && passwd.isEmpty());
 
 				// añadir username y passwd introducidos por usuario a lista
@@ -52,20 +57,47 @@ public class Ejer8 {
 			}
 
 			case 2 -> {
-				do {
+
+				// bucle while -> controlar si usuario ha intentado acceder más de 3 veces
+				while (contador > 0 && !accesoConcedido) {
 					// pedir credenciales usuario
 					System.out.println("\nIntroduzca sus credenciales: ");
 					System.out.print("Usuario: ");
-					username = sc.nextLine().toLowerCase();
-					
+					username = sc.nextLine().trim().toLowerCase();
+
 					System.out.print("\nContraseña: ");
-					passwd = sc.nextLine().toLowerCase();
+					passwd = sc.nextLine().trim().toLowerCase();
+					
+					// condicional if -> comprobar si ha introducido valor valido / no
+					if (username.isEmpty() && passwd.isEmpty()) {
 
-				} while (username.isEmpty() && passwd.isEmpty());
+						// limpiar buffer
+						sc.nextLine();
+						
+						// condicional if -> comprobar si ha introducido valor valido / no
+						// pedir credenciales usuario
+						System.out.println("\nIntroduzca sus credenciales: ");
+						System.out.print("Usuario: ");
+						username = sc.nextLine().trim().toLowerCase();
 
-				// condicional if -> controlar que 
-				//System.out.println(
-						//"\nTRADUCCIÓN: \n" + traductionEspToEng + " -> " + diccionarioES.get(traductionEspToEng));
+						System.out.print("\nContraseña: ");
+						passwd = sc.nextLine().trim().toLowerCase();
+
+					} else if (aclRealBetis.containsKey(username) && aclRealBetis.get(username).equals(passwd)) {
+						System.out.println("\nHa accedido al área restringida");
+						accesoConcedido = true;
+					} else {
+						contador--;
+						System.out.println("\nCredenciales incorrectas.\nIntentos restantes: " + contador);
+					}
+					
+				}
+				
+				// condicional if -> determinar si se han agotado los intentos
+				if (contador == 0) {
+					System.out.println("\nLo siento, no tiene acceso al área restringida");
+				}
+				
 			}
 
 			case 3 -> {
@@ -78,9 +110,6 @@ public class Ejer8 {
 
 			}
 		} while (opcion != 3);
-
-		// mostrar resultado
-		System.out.println("\nDICCIONARIO\n" );
 
 		// cerrar scanner
 		sc.close();

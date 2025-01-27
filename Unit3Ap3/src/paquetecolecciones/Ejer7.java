@@ -17,7 +17,7 @@ public class Ejer7 {
 		// crear objeto scanner
 		Scanner sc = new Scanner(System.in);
 
-		// construir lista TreeSet -> almacenar numeros enteros positivos
+		// construir mapa TreeMap -> almacenar palabras es español traducidas al inglés
 		TreeMap<String, String> diccionarioES = new TreeMap<String, String>();
 
 		// variable para almacenar opcion
@@ -47,11 +47,22 @@ public class Ejer7 {
 			// condicional switch -> evaluar opcion introducida por usuario
 			switch (opcion) {
 			case 1 -> {
+				// bucle do-while -> asegurar que usuario introduzca palabra en español e ingles
+				do {
+					// pedir palabra en español a usuario
+					System.out.println("\nIntroduzca palabra (ESP): ");
+					palabraEsp = sc.nextLine().trim().toLowerCase();
 
+					// pedir palabra en ingles a usuario
+					System.out.println("\nIntroduzca palabra (ENG): ");
+					palabraEng = sc.nextLine().trim().toLowerCase();
+					
+				} while (palabraEsp.isEmpty() && palabraEng.isEmpty());
+				
 				// pedir palabra en español a usuario
 				System.out.println("\nIntroduzca palabra (ESP): ");
 				palabraEsp = sc.nextLine().toLowerCase();
-
+				
 				// pedir palabra en ingles a usuario
 				System.out.println("\nIntroduzca palabra (ENG): ");
 				palabraEng = sc.nextLine().toLowerCase();
@@ -62,13 +73,20 @@ public class Ejer7 {
 			}
 
 			case 2 -> {
+				do {
+					// pedir palabra en español a usuario
+					System.out.println("\nIntroduzca palabra a traducir (ESP -> ENG): ");
+					traductionEspToEng = sc.nextLine().trim().toLowerCase();
+				} while (traductionEspToEng.isEmpty());
+				
 				// pedir palabra en español a usuario
 				System.out.println("\nIntroduzca palabra a traducir (ESP -> ENG): ");
-				traductionEspToEng = sc.nextLine().toLowerCase();
-
+				traductionEspToEng = sc.nextLine().trim().toLowerCase();
+				
 				// condicional if -> controlar que la palabra se encuentra en el diccionario /
 				// si no - devolver que no se encuentra
 				if (diccionarioES.get(traductionEspToEng) != null) {
+					
 					// usar método get (introducir clave (palabra (ESP) y devuelve valor (palabra
 					// ENG))
 					System.out.println(
@@ -77,6 +95,10 @@ public class Ejer7 {
 					System.err.println("La palabra no se encuentra en el diccionario.");
 				}
 
+				// usar método get (introducir clave (palabra (ESP) y devuelve valor (palabra
+				// ENG))
+				System.out.println(
+						"\nTRADUCCIÓN: \n" + traductionEspToEng + " -> " + diccionarioES.get(traductionEspToEng));
 			}
 
 			case 3 -> {

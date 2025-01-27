@@ -19,7 +19,7 @@ public class Ejer4 {
 		// variable para alamcenar min
 		int min = 0;
 
-		// construir lista TreeSet -> almacenar numeros enteros positivos
+		// construir conjunto TreeSet -> almacenar numeros enteros positivos
 		TreeSet<Integer> enterosAleatorios = new TreeSet<>();
 
 		// bucle while - almacenar numeros aleatorios en lista

@@ -13,7 +13,7 @@ public class Ejer5 {
 		// crear objeto scanner
 		Scanner sc = new Scanner(System.in);
 		
-		// construir lista TreeSet -> almacenar numeros enteros positivos
+		// construir conjunto LinkedHashSet -> almacenar numeros enteros positivos
 		LinkedHashSet<String> listaNombres = new LinkedHashSet<>();
 		
 		// variable para almacenar nombre introducida por usuario
