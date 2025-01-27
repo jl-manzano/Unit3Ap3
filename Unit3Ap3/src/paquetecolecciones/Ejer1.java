@@ -18,7 +18,6 @@ public class Ejer1 {
 		// variable -> almacenar indice
 		int indice = 0;
 
-
 		// construir lista ArrayList -> almacenar numeros enteros positivos
 		ArrayList<Integer> enterosPositivos = new ArrayList<>();
 
