@@ -10,17 +10,12 @@ public class Ejer2 {
 		
 		// construir conjunto LinkedHashSet -> almacenar nºs aleatorios
 		LinkedHashSet<Integer> numAleatorios = new LinkedHashSet<Integer>();
-		
-		// variabler para almacenar nº aleatorio
-		int aleat;
-		
+	
 		// bucle while -> almacenar 10 nºs aleatorios
 		while (numAleatorios.size() < 10) {
-			// generar numAleatorio
-			aleat = rand.nextInt(0,20) + 1;
 			
 			// añadir nº aleatorio a conjunto
-			numAleatorios.add(aleat);
+			numAleatorios.add(rand.nextInt(20) + 1);
 		}
 		
 		// mostrar nºs generados por pantalla
