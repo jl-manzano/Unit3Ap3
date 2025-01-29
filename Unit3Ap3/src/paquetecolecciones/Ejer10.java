@@ -36,7 +36,7 @@ public class Ejer10 {
 			System.out.println("PRODUCTOS");
 			System.out.println("1. Alta de producto");
 			System.out.println("2. Baja de producto");
-			System.out.println("4. Listar existencias");
+			System.out.println("3. Listar existencias");
 			System.out.println("0. Salir");
 
 			// pedir opcion a usuario
@@ -91,7 +91,7 @@ public class Ejer10 {
 				}
 			}
 
-			case 4 -> {
+			case 3 -> {
 
 				// pedir a usuario nombre del prod
 				System.out.println("Introduzca el nombre del producto: ");
